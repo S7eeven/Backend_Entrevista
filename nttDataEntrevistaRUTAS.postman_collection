@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "96bbeaef-46e5-411a-976c-5df3ca1e5896",
+		"name": "nttDataEntrevista",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Cliente-persona/clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contraseña\": \"1023\",\r\n    \"estado\": true,\r\n    \"persona\": {\r\n        \"nombre\": \"Eduardo Orbe\",\r\n        \"genero\": \"M\",\r\n        \"edad\": 25,\r\n        \"identificacion\": \"2300071532\",\r\n        \"direccion\": \"Quito\",\r\n        \"telefono\": \"0999390285\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cuenta para el Cliente-Persona/cuentas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroCuenta\": \"222410\",\r\n    \"tipoCuenta\": \"Ahorro\",\r\n    \"saldoInicial\": 2500.00,\r\n    \"estado\": true,\r\n    \"cliente\": {\r\n        \"clienteid\": 4\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cuentas",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar un Depósito para la Cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movimientos?numeroCuenta=222410&tipoMovimiento=Deposito&valor=500.00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos"
+					],
+					"query": [
+						{
+							"key": "numeroCuenta",
+							"value": "222410"
+						},
+						{
+							"key": "tipoMovimiento",
+							"value": "Deposito"
+						},
+						{
+							"key": "valor",
+							"value": "500.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar un Retiro para la Cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movimientos?numeroCuenta=222410&tipoMovimiento=Retiro&valor=-600.00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos"
+					],
+					"query": [
+						{
+							"key": "numeroCuenta",
+							"value": "222410"
+						},
+						{
+							"key": "tipoMovimiento",
+							"value": "Retiro"
+						},
+						{
+							"key": "valor",
+							"value": "-600.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Movimientos para la Cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movimientos?numeroCuenta=222410",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos"
+					],
+					"query": [
+						{
+							"key": "numeroCuenta",
+							"value": "222410"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generar Reporte Cliente Rango de Fecha y Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reportes?clienteId=4&fechaInicio=2024-01-01&fechaFin=2024-10-12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes"
+					],
+					"query": [
+						{
+							"key": "clienteId",
+							"value": "4"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2024-10-12"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
